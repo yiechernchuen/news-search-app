@@ -1,11 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Grid, TextField, Button, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Logo from '../shared/Logo';
 
 const dummyAccount = { username: 'Test', password: '12345' };
 
-function Login({ handleLogin }) {
+function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showUsernameError, setShowUsernameError] = useState(false);
@@ -13,13 +14,13 @@ function Login({ handleLogin }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        handleLogin(false);
+        sessionStorage.setItem('isLoggedIn', JSON.stringify(false));
     }, []);
 
     function handleSubmit(e) {
         e.preventDefault();
         if (username === dummyAccount.username && password === dummyAccount.password) {
-            handleLogin(true);
+            sessionStorage.setItem('isLoggedIn', JSON.stringify(true));
             navigate('/home');
         } else {
             setShowUsernameError((prevShowFormInputError) => !prevShowFormInputError);
@@ -65,6 +66,7 @@ function Login({ handleLogin }) {
                 <Grid item>
                     <TextField
                         label='Password'
+                        type='password'
                         variant='outlined'
                         onChange={(e) => {
                             setPassword(e.target.value);

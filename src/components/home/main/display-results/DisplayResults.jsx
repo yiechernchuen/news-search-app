@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import NewsItem from '../news-item/NewsItem';
 import { Button, Typography, IconButton } from '@mui/material';
 import ArrowCircleUpOutlinedIcon from '@mui/icons-material/ArrowCircleUpOutlined';

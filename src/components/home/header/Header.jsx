@@ -5,13 +5,14 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Logo from '../../shared/Logo';
 
-function Header({ searchParam, setSearchParam, handleSubmit, handleLogin }) {
+function Header({ searchParam, setSearchParam, handleSubmit }) {
     const navigate = useNavigate();
     return (
         <header className='header' id='header'>
             <Logo />
             <form className='search-bar' onSubmit={handleSubmit}>
                 <TextField
+                    required
                     variant='outlined'
                     value={searchParam}
                     size='small'
@@ -35,7 +36,7 @@ function Header({ searchParam, setSearchParam, handleSubmit, handleLogin }) {
                     label='LOGOUT'
                     variant='outlined'
                     onClick={() => {
-                        handleLogin(false);
+                        sessionStorage.setItem('isLoggedIn', JSON.stringify(false));
                         navigate('/');
                     }}
                 />
@@ -44,7 +45,7 @@ function Header({ searchParam, setSearchParam, handleSubmit, handleLogin }) {
                     color='primary'
                     variant='outlined'
                     onClick={() => {
-                        handleLogin(false);
+                        sessionStorage.setItem('isLoggedIn', JSON.stringify(false));
                         navigate('/');
                     }}>
                     <LogoutOutlinedIcon />

@@ -5,7 +5,7 @@ import Header from './header/Header';
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Home({ isLoggedIn, handleLogin }) {
+function Home() {
     const [searchParam, setSearchParam] = useState('');
     const [newsResult, setNewsResult] = useState([]);
     const [newsPage, setNewsPage] = useState(2);
@@ -18,7 +18,7 @@ function Home({ isLoggedIn, handleLogin }) {
     }, [favoritesList]);
 
     useEffect(() => {
-        if (!isLoggedIn) navigate('/');
+        if (!JSON.parse(sessionStorage.getItem('isLoggedIn'))) navigate('/');
     }, []);
 
     async function getNewsData(searchParam, page) {
@@ -33,6 +33,7 @@ function Home({ isLoggedIn, handleLogin }) {
     }
 
     async function handleSubmit(e) {
+        if (searchParam[0] === ' ') return;
         e.preventDefault();
         setSearchParam('');
         const json = await getNewsData(searchParam, 1);
@@ -65,12 +66,7 @@ function Home({ isLoggedIn, handleLogin }) {
 
     return (
         <>
-            <Header
-                setSearchParam={setSearchParam}
-                handleSubmit={handleSubmit}
-                searchParam={searchParam}
-                handleLogin={handleLogin}
-            />
+            <Header setSearchParam={setSearchParam} handleSubmit={handleSubmit} searchParam={searchParam} />
             <main className='main'>
                 <MyFavoritesPanel
                     favoritesList={favoritesList}
