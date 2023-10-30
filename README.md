@@ -14,9 +14,10 @@ React-based web application designed to help users search for the latest news ba
 -   **Access News :** Users can view the news articles on the source websites.
 -   **Save Favorites :** Users can save their favorite news articles and access them when needed.
 
-## Live preview [here](https://news-search-app-ycc.pages.dev/)
+## 
 
 ![login](https://github.com/yiechernchuen/news-search-app/assets/117752972/82b26ca4-27d8-4453-887d-506718b6e0d8)
+
 ![news](https://github.com/yiechernchuen/news-search-app/assets/117752972/9a67c3a1-052f-496f-acc3-8171c3b97e57)
 
 
