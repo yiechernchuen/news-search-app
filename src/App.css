@@ -56,7 +56,7 @@ body {
 .favorites-item {
     display: flex;
     gap: 1rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
